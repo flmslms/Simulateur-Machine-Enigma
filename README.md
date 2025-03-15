@@ -24,3 +24,12 @@ Avant de commencer, vous devez installer les dépendances suivantes :
 
 ```bash
 pip install -r requirements.txt
+```
+
+## 🏆 **Crédits**
+
+Ce projet a été réalisé par:
+
+- Pierre GUILLOT
+- Victor ROMEAS
+- Loïs ALIROL
