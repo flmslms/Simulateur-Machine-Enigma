@@ -2,11 +2,12 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore import QTimer
 
+import os
+import sys
+
 from ui.interface_enigma import Ui_MainWindow
 from ui.dialogue_config import Ui_Dialog
 from enigma.classe_enigma import Enigma
-
-import sys 
 
 style_lampe = "QLabel{border-radius: 30px;border: 3px solid #32353A;color: #32353A;}"
 style_lampe_active = "QLabel{border-radius: 30px;color:#8BB7B3;border: 5px solid #8BB7B3;font-weight: bold;}"
@@ -271,6 +272,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ch += cle + valeur
         return ch
     
+    def keyPressEvent(self, event):
+        if event.text().upper() in self.alphabet:
+            self.verifier_touche(event.text().upper())
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
