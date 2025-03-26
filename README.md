@@ -6,10 +6,10 @@
 
 ## ⚙️ **Fonctionnalités**
 
-- Cool
-- Sympa
-- Cool
-- Bien ?
+- Chiffrement/Déchiffrement lettre par lettre
+- Paramétrage des rotors
+- Paramétrages des reflécteurs
+- Choix de l'anneau de chaque rotor
 
 ## 🔧 **Prérequis**
 
