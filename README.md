@@ -2,7 +2,7 @@
 
 ## 📖 **Description**
 
-EnigMachine est une réplique numérique de la machine Enigma, développée en Python avec une interface graphique intuitive. Conçue avec PyQt5, elle permet de visualiser le chiffrement en temps réel tout en offrant la possibilité de configurer les rotors, le réflecteur, le câblage et les anneaux de chaque rotor. Fidèle au fonctionnement original, cette application mixe la cryptographie, la programmation et l'histoire, permettant une expérience interactive pour mieux comprendre les principes de la célèbre machine.
+EnigMachine est une version numérique de la machine Enigma, développée en Python avec une interface graphique. Conçue avec PyQt5, elle permet de visualiser le chiffrement en temps réel tout en offrant la possibilité de configurer les rotors, le réflecteur, le câblage et les anneaux de chaque rotor. Fidèle au fonctionnement original, cette application mixe la cryptographie, la programmation et l'histoire, permettant une expérience interactive pour comprendre les principes de la célèbre machine.
 
 ## ⚙️ **Fonctionnalités**
 
