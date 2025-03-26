@@ -17,7 +17,7 @@ La fenêtre principale permet d'interagir avec la machine Enigma pour chiffrer e
 
 ![Fenêtre Principale](main_window.png)
 
-- **Paramètres des rotors** : Ajustement de la position des rotors.
+- **Paramètres des rotors** : Ajustement de la position des rotors. Vous pouvez cliquer sur la flèche pour décaler d'un cran seulement ou double-cliquer sur la lettre pour directement insérer la lettre choisie
 - **Mise à zéro des paramètres** : Réinitialisation des réglages via le bouton "REINITIALISER".
 - **Ouverture de la configuration** : Accès aux réglages avancés via "CONFIGURER".
 - **Historique du chiffrement et déchiffrement** : Visualisation des lettres encodées et décodées.
