@@ -1,6 +1,6 @@
-# Enigmachine - Documentation
+# 🛠️ Enigmachine - Documentation
 
-## 1. Fenêtre de Configuration
+## ⚙️ 1. Fenêtre de Configuration
 La fenêtre de configuration permet de définir les paramètres initiaux de la machine Enigma.
 
 ![Fenêtre de Configuration](config_window.png)
@@ -12,15 +12,15 @@ La fenêtre de configuration permet de définir les paramètres initiaux de la m
 - **Validation des paramètres** : Enregistrement des réglages en cliquant sur le bouton "VALIDER".
 - **Annulation des modifications** : Réinitialisation des réglages en cliquant sur le bouton "ANNULER".
 
-## 2. Fenêtre Principale
+## 🖥️ 2. Fenêtre Principale
 La fenêtre principale permet d'interagir avec la machine Enigma pour chiffrer et déchiffrer des messages.
 
 ![Fenêtre Principale](main_window.png)
 
-- **Paramètres des rotors** : Ajustement de la position des rotors. Vous pouvez cliquer sur la flèche pour décaler d'un cran seulement ou double-cliquer sur la lettre pour directement insérer la lettre choisie
+- **Paramètres des rotors** : Ajustement de la position des rotors. Vous pouvez cliquer sur la flèche pour décaler d'un cran.
 - **Mise à zéro des paramètres** : Réinitialisation des réglages via le bouton "REINITIALISER".
-- **Ouverture de la configuration** : Accès aux réglages avancés via "CONFIGURER".
+- **Ouverture de la configuration** : Accès aux réglages via "CONFIGURER" (fenêtre configuration vu dans la partie 1).
 - **Historique du chiffrement et déchiffrement** : Visualisation des lettres encodées et décodées.
-- **Paramètres du câblage** : Configuration des connexions entre les lettres.
-- **Clavier et lampes** : Interface de saisie et affichage des lettres chiffrées.
+- **Paramètres du câblage** : Configuration des connexions entre les lettres. Ecrivez la lettre associée dans la case en dessous, ou double-cliquez pour l'enlever.
+- **Clavier et lampes** : Appuyez sur le clavier numérique, ou sur votre clavier physique et la lettre chiffrée sera illuminée en bleu.
 
