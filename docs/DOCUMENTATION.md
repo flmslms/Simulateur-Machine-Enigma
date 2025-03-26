@@ -7,8 +7,8 @@ La fenêtre de configuration permet de définir les paramètres initiaux de la m
 
 - **Choix du réflecteur** : Sélection du type de réflecteur (UKW-B ou UKW-C, les deux seuls implémentés dans ce projet).
 - **Choix des rotors** : Sélection des trois rotors utilisés (I, II, III, IV et V).
-- **Positions des anneaux** : Définition des positions initiales des anneaux sous la forme: \n
-   `<ANNEAU ROTOR GAUCHE><ANNEAU ROTOR CENTRE><ANNEAU ROTOR DROIT>` (exemple: `JCB`).
+- **Positions des anneaux** : Définition des positions initiales des anneaux sous la forme:
+   - `<ANNEAU ROTOR GAUCHE><ANNEAU ROTOR CENTRE><ANNEAU ROTOR DROIT>` (exemple: `JCB`).
 - **Validation des paramètres** : Enregistrement des réglages en cliquant sur le bouton "VALIDER".
 - **Annulation des modifications** : Réinitialisation des réglages en cliquant sur le bouton "ANNULER".
 
