@@ -2,8 +2,8 @@
 # Classe Enigma
 #----------------------------------------------------
 
-import enigma.classe_rotor as rtr
-import enigma.classe_reflecteur as rfl
+import classe_rotor as rtr
+import classe_reflecteur as rfl
 
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -37,7 +37,7 @@ class Enigma:
     def GetNumReflecteur(self):
         return self.reflecteur.Get_num_reflecteur()
     
-    def Set_Configuration_depart(self, configrotor_g, configrotor_c, configrotor_d, ringrotor_g, ringrotor_c, ringrotor_d):
+    def Set_Configuration_depart(self, configrotor_g, configrotor_c, configrotor_d, ring_g, ring_c, ring_d):
         """
         Configuration de la position initial des 3 rotors
         Paramètres :
@@ -52,9 +52,11 @@ class Enigma:
         self.rotor_c.pos_init_rotor(ALPHABET.index(configrotor_c))
         self.rotor_d.pos_init_rotor(ALPHABET.index(configrotor_d))
 
-        self.rotor_g.appliquer_ring_setting(ALPHABET.index(ringrotor_g))
-        self.rotor_c.appliquer_ring_setting(ALPHABET.index(ringrotor_c))
-        self.rotor_d.appliquer_ring_setting(ALPHABET.index(ringrotor_d))
+        self.rotor_g.appliquer_ring_setting(ALPHABET.index(ring_g))
+        self.rotor_c.appliquer_ring_setting(ALPHABET.index(ring_c))
+        self.rotor_d.appliquer_ring_setting(ALPHABET.index(ring_d))
+
+        print(ALPHABET.index(ring_g))
     
     def Set_cablage_depart(self, cables):
         """
@@ -169,8 +171,8 @@ class Enigma:
 if __name__ == "__main__":
     print("\nMachine ENIGNMA M3")
     
-    M3 = Enigma(5,3,1,2) #rotor_g, rotor_c, rotor_d, refl
-    M3.Set_Configuration_depart("J", "C", "B", "Z", "Y", "X")
+    M3 = Enigma(5,3,1,2)
+    M3.Set_Configuration_depart("J", "C", "B", "A", "B", "C")    
     M3.Set_cablage_depart("FT")
 
     #Message à décoder

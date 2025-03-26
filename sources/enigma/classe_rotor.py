@@ -97,7 +97,6 @@ class Rotor:
     def appliquer_ring_setting(self, ring_setting):
         """ Décale le rotor en fonction du réglage de l'anneau. """
         self.ring = ring_setting
-        self.rotor = self.rotor[self.ring:] + self.rotor[:self.ring]
 
     def passage_dans_rotor(self, valeur):
         """
@@ -111,7 +110,7 @@ class Rotor:
                   renvoie 'H', 7
         
         """
-        valeur = (valeur + self.ring) % 26
+        valeur = (valeur - self.ring)% 26
         lettre = self.rotor[valeur]
         indice = (ALPHABET.index(lettre) - self.ring) % 26
         return lettre, indice
@@ -130,7 +129,7 @@ class Rotor:
         """ 
         valeur = (valeur + self.ring) % 26
         lettre = ALPHABET[valeur]
-        indice = (self.rotor.index(lettre) - self.ring) % 26
+        indice = (self.rotor.index(lettre) + self.ring) % 26
         return lettre, indice
 
 if __name__ == "__main__":
