@@ -9,6 +9,7 @@ EnigMachine est une version numérique de la machine Enigma, développée en Pyt
 - Chiffrement/Déchiffrement lettre par lettre
 - Paramétrage des rotors
 - Paramétrages des reflécteurs
+- Configuration du câblage
 - Choix de l'anneau de chaque rotor
 
 ## 🔧 **Prérequis**
