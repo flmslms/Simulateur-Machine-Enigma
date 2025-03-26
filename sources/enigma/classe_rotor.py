@@ -65,6 +65,8 @@ class Rotor:
             val = 5
         return val
 
+    def Get_ring_setting(self):
+        return self.ring
         
     def decalage_un_rang(self):
         """
@@ -110,7 +112,7 @@ class Rotor:
                   renvoie 'H', 7
         
         """
-        valeur = (valeur - self.ring)% 26
+        valeur = (valeur + self.ring) % 26
         lettre = self.rotor[valeur]
         indice = (ALPHABET.index(lettre) - self.ring) % 26
         return lettre, indice
@@ -131,7 +133,7 @@ class Rotor:
         lettre = ALPHABET[valeur]
         indice = (self.rotor.index(lettre) + self.ring) % 26
         return lettre, indice
-
+    
 if __name__ == "__main__":
     mon_rotor = Rotor(3)    
     print(mon_rotor.rotor)

@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 font1 = "Bahnschrift"
 
 style_combo_box = "QComboBox{border:2px solid #BFBFC1;color:#BFBFC1;}QComboBox::drop-down{border:0;}QListView{border:2px solid #BFBFC1;color:#BFBFC1;background-color:#242629;outline:none;font-family:'Bahnschrift SemiCondensed';font-size:12pt;}"
+style_entry = "QLineEdit{border:2px solid #BFBFC1;color:#BFBFC1;}"
 style_label = "QLabel{border: 0;border-radius: 0;background-color: transparent;color: #BFBFC1;}"
 style_btn_okcancel = "QPushButton{font-family:'Bahnschrift';font-weight:bold;font-size:12pt;padding:5px;margin-top:12px;border: 2px solid #BFBFC1;border-radius: 7px;color: #BFBFC1;background: #242629;}QPushButton:Hover{border: 2px solid #8BB7B3;border-radius: 7px;background: qlineargradient(y1:0, y2:1, stop:0 rgba(139, 183, 179, 0.50),stop:0.30 rgba(139, 183, 179, 0.15),stop:0.70 rgba(139, 183, 179, 0.15),stop:1 rgba(139, 183, 179, 0.50));color: #8BB7B3;}"
 
@@ -20,10 +21,10 @@ class Ui_Dialog(object):
         Dialog.setWindowFlags(QtCore.Qt.Tool)
         Dialog.setObjectName("Dialog")
         Dialog.resize(420, 322)
-        Dialog.setFixedSize(QtCore.QSize(420, 322))
+        Dialog.setFixedSize(QtCore.QSize(420, 365))
         Dialog.setStyleSheet("background-color: #282A2D;")
         self.btn_okcancel = QtWidgets.QDialogButtonBox(Dialog)
-        self.btn_okcancel.setGeometry(QtCore.QRect(10, 270, 401, 41))
+        self.btn_okcancel.setGeometry(QtCore.QRect(10, 310, 401, 41))
         self.btn_okcancel.setStyleSheet(style_btn_okcancel)
         self.btn_okcancel.setOrientation(QtCore.Qt.Horizontal)
         self.btn_okcancel.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
@@ -32,13 +33,13 @@ class Ui_Dialog(object):
         self.btn_okcancel.button(QtWidgets.QDialogButtonBox.Ok).setText("VALIDER")
         self.btn_okcancel.button(QtWidgets.QDialogButtonBox.Cancel).setText("ANNULER")
         self.frame_config = QtWidgets.QFrame(Dialog)
-        self.frame_config.setGeometry(QtCore.QRect(10, 40, 401, 231))
+        self.frame_config.setGeometry(QtCore.QRect(10, 40, 401, 270))
         self.frame_config.setStyleSheet("QFrame{border-radius: 7px;background-color: #2D3033;border: 2px solid #1A1C1E;}QFrame > *{border-radius: 0;border: none;background-color: transparent;}")
         self.frame_config.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_config.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_config.setObjectName("frame_config")
         self.gridLayoutWidget = QtWidgets.QWidget(self.frame_config)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 381, 212))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 381, 252))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.grid_layout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.grid_layout.setContentsMargins(0, 0, 0, 0)
@@ -107,6 +108,7 @@ class Ui_Dialog(object):
         self.label_rotor_g.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_rotor_g.setObjectName("label_rotor_g")
         self.grid_layout.addWidget(self.label_rotor_g, 2, 0, 1, 1)
+        
         self.label_rotor_d = QtWidgets.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
         font.setFamily(font1)
@@ -118,6 +120,32 @@ class Ui_Dialog(object):
         self.label_rotor_d.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_rotor_d.setObjectName("label_rotor_d")
         self.grid_layout.addWidget(self.label_rotor_d, 6, 0, 1, 1)
+
+        self.label_ring = QtWidgets.QLabel(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily(font1)
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_ring.setFont(font)
+        self.label_ring.setStyleSheet(style_label)
+        self.label_ring.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.label_ring.setObjectName("label_ring")
+        self.grid_layout.addWidget(self.label_ring, 8, 0, 1, 1)
+        self.entry_ring = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily(font1)
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.entry_ring.setFont(font)
+        self.entry_ring.setStyleSheet(style_entry)
+        self.entry_ring.setGeometry(QtCore.QRect(440, 220, 113, 20))
+        self.entry_ring.setObjectName("entry_ring")
+        self.entry_ring.setMaxLength(3)
+        self.entry_ring.setText("")
+        self.grid_layout.addWidget(self.entry_ring, 9, 0, 1, 1)
+
         view = QtWidgets.QListView()
         self.combo_box_rc = QtWidgets.QComboBox(self.gridLayoutWidget)
         self.combo_box_rc.setView(view)
@@ -168,7 +196,6 @@ class Ui_Dialog(object):
         self.btn_okcancel.rejected.connect(Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Configuration"))
@@ -185,6 +212,7 @@ class Ui_Dialog(object):
         self.label_rotor_c.setText(_translate("Dialog", "ROTOR CENTRE"))
         self.label_rotor_g.setText(_translate("Dialog", "ROTOR GAUCHE"))
         self.label_rotor_d.setText(_translate("Dialog", "ROTOR DROIT"))
+        self.label_ring.setText(_translate("Dialog", "ANNEAUX"))
         self.combo_box_rc.setCurrentText(_translate("Dialog", "I"))
         self.combo_box_rc.setItemText(0, _translate("Dialog", "I"))
         self.combo_box_rc.setItemText(1, _translate("Dialog", "II"))

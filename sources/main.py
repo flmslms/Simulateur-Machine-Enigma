@@ -20,16 +20,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.machine = Enigma(1,2,3,1)
         self.machine.Set_cablage_depart("")
-        self.machine.Set_Configuration_depart("A","A","A")
-
-
+        self.machine.Set_Configuration_depart("A","A","A","A","A","A")
+        
     def reinitialiser_machine(self):
         # Reinitialisation des variables
         self.machine = Enigma(1,2,3,1)
-        self.machine.Set_Configuration_depart("A","A","A")
+        self.machine.Set_Configuration_depart("A","A","A","A","A","A")
         self.machine.Set_cablage_depart("")
         self.dico_cablage = {}
-
         self.lettre_init_g = "A"
         self.lettre_init_c = "A"
         self.lettre_init_d = "A"
@@ -50,7 +48,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def verifier_touche(self, lettre):
         if self.entry_non_crypte.toPlainText() == "":
-            self.machine.Set_Configuration_depart(self.lettre_init_g, self.lettre_init_c, self.lettre_init_d)
+            self.machine.Set_Configuration_depart(self.lettre_init_g, self.lettre_init_c, self.lettre_init_d, "A", "A", "A")
         self.activer_touche(lettre)
 
     def activer_touche(self, lettre):
@@ -73,13 +71,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if len(texte.replace(" ", "")) % 5 == 0 and len(texte) > 0:
             champ.insertPlainText(" ")
         champ.insertPlainText(lettre)
-        
+
+    def mettre_en_majuscule(self, entry):
+        # Convert the text to uppercase for the given entry
+        texte = entry.text()
+        entry.setText(texte.upper())
+
     def dialogue_config(self):
         self.s_bouton.play()
-        
+
         dialogue = QtWidgets.QDialog()
         dialogue.ui = Ui_Dialog()
         dialogue.ui.setupUi(dialogue)
+
+        dialogue.ui.entry_ring.textChanged.connect(lambda: self.mettre_en_majuscule(dialogue.ui.entry_ring))
 
         #Inserer les valeurs au demarrage
         if self.machine.GetNumReflecteur() == 1:
@@ -91,8 +96,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         dialogue.ui.combo_box_rc.setCurrentText(self.convertir_arabe_en_romain(self.machine.GetNumRotorCentre()))
         dialogue.ui.combo_box_rd.setCurrentText(self.convertir_arabe_en_romain(self.machine.GetNumRotorDroite()))
 
+        dialogue.ui.entry_ring.setText(self.alphabet[self.machine.rotor_g.ring] + self.alphabet[self.machine.rotor_c.ring] + self.alphabet[self.machine.rotor_d.ring])
+
+        print(self.machine.rotor_g.ring, self.machine.rotor_c.ring, self.machine.rotor_d.ring)
+
         #Mettre a jour les valeurs a la fermeture
         if dialogue.exec_() == QtWidgets.QDialog.Accepted:
+            ring_settings = dialogue.ui.entry_ring.text().upper()
+
+            if len(ring_settings) != 3 or ring_settings[0] not in self.alphabet or ring_settings[1] not in self.alphabet or ring_settings[2] not in self.alphabet:
+                print("ERREUR - Lettre inconnue ou manquante")
+            else:
+                self.machine.Set_Configuration_depart("A","A","A", ring_settings[0],ring_settings[1],ring_settings[2]) #on ne peut pas mettre AAA
+                
             if dialogue.ui.combo_box_reflecteur.currentText() == "UKW-B":
                 refl = 1
             else:
@@ -105,8 +121,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if rotor_g == rotor_c or rotor_g == rotor_d or rotor_c == rotor_d:
                 print("ERREUR - Il ne peut pas y avoir deux mêmes rotors dans des emplacements différents.")
             else:
-                self.machine.Set_Configuration_depart("A","A","A")
-
+                self.machine.Set_Configuration_depart("A","A","A", self.alphabet[self.machine.rotor_g.ring],
+                                                      self.alphabet[self.machine.rotor_c.ring],
+                                                      self.alphabet[self.machine.rotor_d.ring])
+                
                 self.lettre_init_g = "A"
                 self.lettre_init_c = "A"
                 self.lettre_init_d = "A"
@@ -115,6 +133,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.position_rc.setText("Z\nA\nB\n")
                 self.position_rd.setText("Z\nA\nB\n")
                 self.machine = Enigma(rotor_g, rotor_c, rotor_d, refl)
+
+            self.machine.rotor_g.ring = self.alphabet.index(ring_settings[0])
+            self.machine.rotor_c.ring = self.alphabet.index(ring_settings[1])
+            self.machine.rotor_d.ring = self.alphabet.index(ring_settings[2])
+
+            print(self.machine) #suppr
+                
         self.s_bouton.play()
 
     def convertir_romain_en_arabe(self, c_romain):
@@ -270,6 +295,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for cle, valeur in dico.items():
             ch += cle + valeur
         return ch
+    
+    def keyPressEvent(self, event):
+        if event.text().upper() in self.alphabet:
+            self.verifier_touche(event.text().upper())
     
 
 if __name__ == "__main__":

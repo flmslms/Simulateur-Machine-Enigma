@@ -4,6 +4,7 @@ import os
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtMultimedia import QSoundEffect
 from PyQt5.QtCore import QUrl
+from PyQt5.QtGui import QIcon
 
 font1 = "Trebuchet MS"
 font2 = "Bahnschrift"
@@ -31,6 +32,7 @@ chemin_enigma_icon = os.path.join(repertoire_resources, "images", "enigma.png")
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
+        MainWindow.setWindowIcon(QIcon(chemin_enigma_icon))
         MainWindow.resize(1100, 650)
         MainWindow.setFixedSize(QtCore.QSize(1100, 650))
         MainWindow.setStyleSheet("background-color: #282A2D;")
@@ -1537,8 +1539,8 @@ class Ui_MainWindow(object):
         self.label_rd.setText(_translate("MainWindow", "ROTOR D"))
         self.btn_rd_s.setText(_translate("MainWindow", "⮟"))
         self.btn_rd_p.setText(_translate("MainWindow", "⮝"))
-        self.label_crypte.setText(_translate("MainWindow", " CRYPTÉ"))
-        self.label_non_crypte.setText(_translate("MainWindow", "NON CRYPTÉ"))
+        self.label_crypte.setText(_translate("MainWindow", " CHIFFRAGE"))
+        self.label_non_crypte.setText(_translate("MainWindow", "DECHIFFRAGE"))
         self.a_label.setText(_translate("MainWindow", "<html><head/><body><p>A</p></body></html>"))
         self.b_label.setText(_translate("MainWindow", "<html><head/><body><p>B</p></body></html>"))
         self.c_label.setText(_translate("MainWindow", "<html><head/><body><p>C</p></body></html>"))
@@ -1575,10 +1577,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.setFocus()
-        
-    def keyPressEvent(self, event):
-        if event.text().upper() in self.alphabet:
-            self.verifier_touche(event.text().upper())
 
 class CustomLineEdit(QtWidgets.QLineEdit):
     def mouseDoubleClickEvent(self, event):
