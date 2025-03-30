@@ -1,8 +1,11 @@
-# **Enigma - Machine à Coder et Décoder**
+# **Enigma - Machine à Coder et Décoder (Trophées NSI 2025)**
 
 ## 📖 **Description**
 
 EnigMachine est une version numérique de la machine Enigma, développée en Python avec une interface graphique. Conçue avec PyQt5, elle permet de visualiser le chiffrement en temps réel tout en offrant la possibilité de configurer les rotors, le réflecteur, le câblage et les anneaux de chaque rotor. Fidèle au fonctionnement original, cette application mixe la cryptographie, la programmation et l'histoire, permettant une expérience interactive pour comprendre les principes de la célèbre machine.
+
+Aperçu de la machine:
+https://github.com/user-attachments/assets/2c0254ee-615d-4019-a4e3-8a1f50f857e3
 
 ## ⚙️ **Fonctionnalités**
 
