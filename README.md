@@ -34,6 +34,6 @@ pip install -r requirements.txt
 
 Ce projet a été réalisé par:
 
-- Pierre GUILLOT
-- Victor ROMEAS
-- Loïs ALIROL
+- @Neocle
+- @pierre799
+- @Neimeyos
