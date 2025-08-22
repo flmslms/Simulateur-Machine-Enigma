@@ -32,8 +32,4 @@ pip install -r requirements.txt
 
 ## 🏆 **Crédits**
 
-Ce projet a été réalisé par:
-
-- @Neocle
-- @pierre799
-- @Neimeyos
+En collaboration avec Neimeyos et Neocle
